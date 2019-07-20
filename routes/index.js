@@ -26,20 +26,20 @@ router.get("/", async function(req, res) {
 
     console.log(resp.articles);
 
-    resp.articles.forEach(element => {
-      //let dbArtciles = await db.Article.find();
-      // Create a new Article using the `result` object built from scraping
-      db.Article.create(element)
-        .then(function(dbArticle) {
-          // View the added result in the console
-          console.log(dbArticle);
-        })
-        .catch(function(err) {
-          // If an error occurred, log it
-          console.log(err);
-        });
+    // resp.articles.forEach(element => {
+    //   //let dbArtciles = await db.Article.find();
+    //   // Create a new Article using the `result` object built from scraping
+    //   db.Article.create(element)
+    //     .then(function(dbArticle) {
+    //       // View the added result in the console
+    //       console.log(dbArticle);
+    //     })
+    //     .catch(function(err) {
+    //       // If an error occurred, log it
+    //       console.log(err);
+    //     });
       
-    });
+    // });
 
     res.render("DisplayAll", resp)
     }catch(err){
