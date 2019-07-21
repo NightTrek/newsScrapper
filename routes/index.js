@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const CC = require('../controllers/cheerioControler');
+const MC = require('../controllers/mongooseController');
 let db = require("../models/articleModel");
 
 mongoose.connect("mongodb://localhost/newsScrapper_db", { useNewUrlParser: true });
@@ -24,22 +25,10 @@ router.get("/", async function(req, res) {
       
     let resp = {articles: await CC.pullNewsArticles()};
 
+    //let mcResp = await MC.getArticlesFromDB();
     console.log(resp.articles);
 
-    // resp.articles.forEach(element => {
-    //   //let dbArtciles = await db.Article.find();
-    //   // Create a new Article using the `result` object built from scraping
-    //   db.Article.create(element)
-    //     .then(function(dbArticle) {
-    //       // View the added result in the console
-    //       console.log(dbArticle);
-    //     })
-    //     .catch(function(err) {
-    //       // If an error occurred, log it
-    //       console.log(err);
-    //     });
-      
-    // });
+  
 
     res.render("DisplayAll", resp)
     }catch(err){
